@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DesaAI 1.0</title>
+<style>
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#f5f7fb;color:#222}
+header{background:linear-gradient(135deg,#0f766e,#2563eb);color:#fff;padding:60px 20px;text-align:center}
+.container{max-width:1100px;margin:auto;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+input,select,textarea{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
+button{background:#2563eb;color:white;border:none;padding:12px 18px;border-radius:8px;cursor:pointer}
+#output{white-space:pre-wrap;background:#eef4ff;padding:15px;border-radius:8px;min-height:250px}
+.stat{display:flex;gap:15px;margin-top:15px}
+.badge{background:#e0f2fe;padding:10px;border-radius:10px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<h1>DesaAI 1.0</h1>
+<p>Platform Administrasi Desa Digital</p>
+</header>
+
+<div class="container">
+<div class="stat">
+<div class="badge">📄 Surat Otomatis</div>
+<div class="badge">🏛️ Administrasi Desa</div>
+<div class="badge">💡 Siap Dikembangkan AI</div>
+</div>
+
+<div class="grid" style="margin-top:20px">
+<div class="card">
+<h2>Generator Surat</h2>
+
+<select id="jenis">
+<option>Surat Keterangan Domisili</option>
+<option>Surat Keterangan Usaha</option>
+<option>Surat Pengantar</option>
+</select>
+
+<input id="nama" placeholder="Nama Lengkap">
+<input id="nik" placeholder="NIK">
+<input id="alamat" placeholder="Alamat">
+<textarea id="keperluan" placeholder="Keperluan"></textarea>
+
+<button onclick="buat()">Buat Dokumen</button>
+</div>
+
+<div class="card">
+<h2>Hasil Dokumen</h2>
+<div id="output">Dokumen akan muncul di sini...</div>
+</div>
+</div>
+</div>
+
+<script>
+function buat(){
+const jenis=document.getElementById('jenis').value;
+const nama=document.getElementById('nama').value;
+const nik=document.getElementById('nik').value;
+const alamat=document.getElementById('alamat').value;
+const keperluan=document.getElementById('keperluan').value;
+
+document.getElementById('output').innerText =
+`${jenis}
+
+Yang bertanda tangan di bawah ini menerangkan bahwa:
+
+Nama : ${nama}
+NIK : ${nik}
+Alamat : ${alamat}
+
+Benar merupakan warga desa dan surat ini digunakan untuk:
+${keperluan}
+
+Demikian surat ini dibuat agar dapat dipergunakan sebagaimana mestinya.
+
+Kepala Desa`;
+}
+</script>
+</body>
+</html>
